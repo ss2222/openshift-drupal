@@ -28,7 +28,11 @@ if [ ! -f ${OPENSHIFT_DATA_DIR}.initialised ]; then
   mv ${OPENSHIFT_REPO_DIR}php/sites/default/files $PUBLIC_FILES_DIR
   ln -s $PUBLIC_FILES_DIR ${OPENSHIFT_REPO_DIR}php/sites/default/files
   
-  drush vset --yes file_private_path $PRIVATE_FILES_DIR
+  drush vset \
+    --yes \
+    --root=${OPENSHIFT_REPO_DIR}php \
+    file_private_path $PRIVATE_FILES_DIR
+
   touch ${OPENSHIFT_DATA_DIR}.initialised
 fi
 
