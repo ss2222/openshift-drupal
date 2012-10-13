@@ -3,3 +3,30 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
+
+export PATH:$PATH/$OPENSHIFT_REPO_DIR/misc/drush
+PUBLIC_FILES_DIR=$OPENSHIFT_DATA_DIR/sites/default
+PRIVATE_FILES_DIR=$OPENSHIFT_DATA_DIR/sites/default-private
+
+if [ ! -f $OPENSHIFT_DATA_DIR/.initialised ]; then
+  cd $OPENSHIFT_DATA_DIR/php
+  
+  drush si --yes --db-url=$OPENSHIFT_DB_URL \
+    --account-mail=admin@netsrv-consulting.com \
+    --account-name=admin \
+    --account-pass=admin \
+    --db-prefix=drupal \
+    --site-mail=enquires@nesrv-consulting.com \
+    --site-name="Drupal On OpenShift"
+
+  mkdir -p $OPENSHIFT_DATA_DIR/sites
+  chmod 755 $OPENSHIFT_DATA_DIR/sites\default
+  mv sites/default/files $PUBLIC_FILES_DIR
+  chmod 555 $OPENSHIFT_DATA_DIR/sites\default
+
+  ln -s $PUBLIC_FILES_DIR $OPENSHIFT_REPO_DIR/php/sites/default/files
+
+  drush vset --yes file_private_path $PRIVATE_FILES_DIR
+  $OPENSHIFT_DATA_DIR/.initialised
+fi
+
