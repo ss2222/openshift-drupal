@@ -20,6 +20,7 @@ if [ ! -f ${OPENSHIFT_DATA_DIR}.initialised ]; then
     --account-name=admin \
     --db-prefix="drupal_" \
     --site-mail=enquires@nesrv-consulting.com \
+    --clean-url=0 \
     --site-name="Drupal On OpenShift"
 
   mkdir -p ${OPENSHIFT_DATA_DIR}sites
