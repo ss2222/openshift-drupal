@@ -18,7 +18,6 @@ if [ ! -f ${OPENSHIFT_DATA_DIR}.initialised ]; then
     --db-su-pw=$OPENSHIFT_DB_PASSWORD \
     --account-mail=admin@netsrv-consulting.com \
     --account-name=admin \
-    --account-pass=admin \
     --db-prefix=drupal \
     --site-mail=enquires@nesrv-consulting.com \
     --site-name="Drupal On OpenShift"
