@@ -26,8 +26,8 @@ if [ ! -f ${OPENSHIFT_DATA_DIR}.initialised ]; then
   mkdir -p ${PRIVATE_FILES_DIR}
   chmod 755 ${OPENSHIFT_REPO_DIR}php/sites/default
   mv ${OPENSHIFT_REPO_DIR}php/sites/default/files $PUBLIC_FILES_DIR
-  ln -s $PUBLIC_FILES_DIR ${OPENSHIFT_REPO_DIR}php/sites/default/files
-  
+  mv ${OPENSHIFT_REPO_DIR}php/sites/default/settings.php ${OPENSHIFT_DATA_DIR}sites/default-settings.php
+
   drush vset \
     --yes \
     --root=${OPENSHIFT_REPO_DIR}php \
@@ -35,6 +35,9 @@ if [ ! -f ${OPENSHIFT_DATA_DIR}.initialised ]; then
 
   touch ${OPENSHIFT_DATA_DIR}.initialised
 fi
+
+ln -s $PUBLIC_FILES_DIR ${OPENSHIFT_REPO_DIR}php/sites/default/files
+ln -s ${OPENSHIFT_DATA_DIR}sites/default-settings.php ${OPENSHIFT_REPO_DIR}php/sites/default/settings.php
 
 cp -fR ${OPENSHIFT_REPO_DIR}misc/private-files/* $PRIVATE_FILES_DIR
 cp -fR ${OPENSHIFT_REPO_DIR}misc/public-files/* $PUBLIC_FILES_DIR
