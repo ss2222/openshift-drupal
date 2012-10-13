@@ -1,0 +1,3 @@
+Contents are copied to Drupal's private files dir on every deploy.
+
+!! WILL OVERWRITE ANY PRE-EXISTING FILES ON THE REMOTE SITE !!

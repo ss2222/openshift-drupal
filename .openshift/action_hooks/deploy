@@ -23,7 +23,7 @@ if [ ! -f ${OPENSHIFT_DATA_DIR}.initialised ]; then
     --clean-url=0 \
     --site-name="Drupal On OpenShift"
 
-  mkdir -p ${OPENSHIFT_DATA_DIR}sites
+  mkdir -p ${PRIVATE_FILES_DIR}
   chmod 755 ${OPENSHIFT_REPO_DIR}php/sites/default
   mv ${OPENSHIFT_REPO_DIR}php/sites/default/files $PUBLIC_FILES_DIR
   ln -s $PUBLIC_FILES_DIR ${OPENSHIFT_REPO_DIR}php/sites/default/files
@@ -36,3 +36,5 @@ if [ ! -f ${OPENSHIFT_DATA_DIR}.initialised ]; then
   touch ${OPENSHIFT_DATA_DIR}.initialised
 fi
 
+cp -fR ${OPENSHIFT_REPO_DIR}misc/private-files/* $PRIVATE_FILES_DIR
+cp -fR ${OPENSHIFT_REPO_DIR}misc/public-files/* $PUBLIC_FILES_DIR
