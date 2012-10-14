@@ -54,6 +54,6 @@ Deploy to Openshift
 
 Make a note of Drupal's admin username/password as you'll need that later.
 
-Open a browser and browse to http://drupal-<your rhc domain>.rhcloud.com
+Open a browser and browse to http://drupal-[your rhc domain].rhcloud.com
 
 FIN
