@@ -46,7 +46,7 @@ Add NetSrv's repo as a remote to your local repo:
 
 Pull in the project
 
-`$ git pull -X theirs -s recursive`
+`$ git pull -X theirs -s recursive netsrv master`
 
 Deploy to Openshift
 
