@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Runs the cron tasks on the default website without the need for
+# supply an API key
+#
+PATH=$PATH:${OPENSHIFT_MISC_DIR}misc/drush
+drush --root=${OPENSHIFT_REPO_DIR}php cron >> ${OPENSHIFT_LOG_DIR}drupal.cron 
