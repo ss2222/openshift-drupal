@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Use this script to remove state information and perform a new install on
+# next deploy
+#
+echo -n "!!! CAUTION !!! This will remove ALL data.  Proceed (y/n)? "
+read REPLY
+if [ "$REPLY" == "y" ]; then
+  rm ${OPENSHIFT_DATA_DIR}.initialised -f 
+  rm ${OPENSHIFT_DATA_DIR}/sites -Rf 
+  echo "Removed local files.  DB remains but will be dropped by the installer next time you deploy"
+fi
+
