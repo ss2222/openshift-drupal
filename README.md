@@ -42,7 +42,7 @@ Add NetSrv's repo as a remote to your local repo:
 
 `$ cd drupal`
 
-`$ git remote add netsrv git@github.com:netsrv/openshift-drupal.git`
+`$ git remote add netsrv git://github.com/netsrv/openshift-drupal.git`
 
 Pull in the project
 
